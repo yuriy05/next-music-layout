@@ -5,6 +5,9 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
+//context provider
+import NavContextProvider from "@/context/NavContext";
+
 const alexBrush = Alex_Brush({
   weight: ["400"],
   subsets: ["latin"],
@@ -24,12 +27,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <NavContextProvider>
+      <html lang="en">
       <body className={`${alexBrush.variable} ${montserrat.variable} overflow-x-hidden relative`}>
         <Header />
         {children}
         <Footer />
       </body>
-    </html>
+      </html>
+    </NavContextProvider>
   );
 }
